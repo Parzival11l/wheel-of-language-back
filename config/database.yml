@@ -1,0 +1,25 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username:
+  password:
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: wheel_of_language_back_development
+
+
+test:
+  <<: *default
+  database: wheel_of_language_back_test
+
+
+production:
+  <<: *default
+  database: wheel-of-language-back_production
+  username: wheel-of-language-back
+  password: <%= ENV["RAILS_PROJECT_DATABASE_PASSWORD"] %>
