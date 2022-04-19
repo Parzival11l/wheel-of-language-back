@@ -1,12 +1,13 @@
+class RegistrationsController < Devise::RegistrationsController
 
-class User::RegistrationsController < Devise::RegistrationsController
   skip_before_action :verify_authenticity_token
 
   def create
-    user = User.new(sigh_up_params)
+    user = User.new(sign_up_params)
 
     if user.save
-      sign_up :user, sigh_up_params
+      Info.create(user_id: user.id)
+      sign_up :user, user
       render json: { user: user }, status: :created
     else
       render json: { error: user.errors }, status: :bad_request
@@ -15,7 +16,7 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def sigh_up_params
+  def sign_up_params
     params.require(:user).permit(
       :login,
       :password

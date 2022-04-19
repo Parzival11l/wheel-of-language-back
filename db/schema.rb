@@ -10,20 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_14_120850) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_15_140541) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "infos", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "first_name", null: false
-    t.string "last_name", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "school"
     t.string "disabled"
-    t.datetime "birthday", null: false
+    t.string "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_infos_on_user_id", unique: true
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "results", force: :cascade do |t|
@@ -35,6 +40,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_120850) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_results_on_user_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
