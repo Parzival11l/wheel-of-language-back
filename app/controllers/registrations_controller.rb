@@ -5,6 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     user = User.new(sign_up_params)
 
+
     if user.save
       Info.create(user_id: user.id)
       sign_up :user, user
