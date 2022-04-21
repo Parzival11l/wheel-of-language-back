@@ -1,18 +1,21 @@
 class InfosController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
 
   def update
-    info = Info.update(info_params)
 
-    if info
-      render json: { info: info }, status: :accepted
-    else
-      render json: { error: info.errors }, status: :bad_request
-    end
+      info = current_user.info
+      if info.update(info_params)
+        render json: { info: info }, status: :accepted
+      else
+        render json: { error: info.errors }, status: :bad_request
+      end
   end
+
 
   def show
     info = Info.find_by_user_id(params[:id])
+
     if info
       render json: {info: info }, status: :accepted
     else

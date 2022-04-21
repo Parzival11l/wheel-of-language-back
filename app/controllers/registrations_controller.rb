@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
 
 
     if user.save
-      Info.create(user_id: user.id)
+      info = Info.create(user_id: user.id)
       sign_up :user, user
       render json: { user: user }, status: :created
     else

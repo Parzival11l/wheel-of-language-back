@@ -9,14 +9,16 @@ Rails.application.routes.draw do
     registrations: 'registrations',
     sessions: 'sessions'
   }
-  devise_for :infos, :controllers => {
-    infos: 'infos'
-  }
+  # devise_for :infos, :controllers => {
+  #   infos: 'infos'
+  # }
   devise_for :results, :controllers => {
     result: 'results'
   }
 
   get 'persons/profile', as: 'user_root'
+
+  put 'infos', to: 'infos#update'
 
   root 'users#index'
 

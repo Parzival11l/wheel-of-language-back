@@ -2,7 +2,6 @@ class ResultsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    p current_user
     results = current_user.results.all
 
     render json: results, status: :ok
