@@ -41,7 +41,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { :host => 'https://wheel-of-language-back-fcshe21tn-mikhaylovalik-bkru.vercel.app/' }
+  config.action_mailer.default_url_options = { :host => 'https://wheel-of-language-back.vercel.app/' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
