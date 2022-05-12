@@ -8,7 +8,7 @@ class ResultsController < ApplicationController
   end
 
   def create
-    result = Result.new(info_params)
+    result = Result.new(result_params)
 
     if result.save
       render json: { result: result }, status: :created
