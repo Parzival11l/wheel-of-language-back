@@ -2,8 +2,11 @@ class InfosController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
 
-  def update
+  def index
+    render json: 'Test infos'
+  end
 
+  def update
       info = current_user.info
       if info.update(info_params)
         render json: { info: info }, status: :accepted
