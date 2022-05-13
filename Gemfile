@@ -16,12 +16,15 @@ gem "bootsnap", require: false
 gem "devise"
 gem 'devise-jwt'
 gem 'rack-cors'
+gem "pg"
+gem 'dotenv-rails', group: [:development, :test]
+
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec"
-  gem "pg"
-  gem 'dotenv-rails'
+
+
 end
 
 group :development do
