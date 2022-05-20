@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[index, show]
+  skip_before_action :verify_authenticity_token, only: %i[create]
 
   def index
     results = current_user.results.all
@@ -32,8 +33,8 @@ class ResultsController < ApplicationController
     params.require(:result).permit(
       :date,
       :game_time,
-      :result,
-      :time_start
+      :total,
+      :time_start,
     )
   end
 end

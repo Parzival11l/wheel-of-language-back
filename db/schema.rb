@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_15_140541) do
     t.datetime "date"
     t.datetime "time_start"
     t.datetime "game_time"
-    t.string "result"
+    t.string "total"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

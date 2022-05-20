@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   }
 
   put 'infos', to: 'infos#update'
+
+  post '/create/results', to: 'results#create'
+
 end

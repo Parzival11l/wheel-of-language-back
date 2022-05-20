@@ -4,7 +4,7 @@ class CreateResults < ActiveRecord::Migration[7.0]
       t.datetime :date
       t.datetime :time_start
       t.datetime :game_time
-      t.string :result
+      t.string :total
       t.belongs_to :user
       t.timestamps
     end
