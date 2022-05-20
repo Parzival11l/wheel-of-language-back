@@ -35,6 +35,7 @@ class ResultsController < ApplicationController
       :game_time,
       :total,
       :time_start,
+      :user_id
     )
   end
 end
