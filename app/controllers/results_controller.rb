@@ -9,9 +9,11 @@ class ResultsController < ApplicationController
   end
 
   def create
+    user = User.find_by(:login => params[:login])
+
     result = Result.new(result_params)
 
-    if result.save
+    if user.results.create(result)
       render json: { result: result }, status: :created
     else
       render json: { error: result.errors }, status: :bad_request
@@ -27,15 +29,13 @@ class ResultsController < ApplicationController
     end
   end
 
-
-
   def result_params
     params.require(:result).permit(
       :date,
       :game_time,
       :total,
       :time_start,
-      :user_id
+      :login
     )
   end
 end
