@@ -9,11 +9,11 @@ class ResultsController < ApplicationController
   end
 
   def create
-    user = User.find_by(:login => params[:login])
+    user = User.find_by(login: params[:login])
+    params = result_params.merge({user_id: user.id})
+    result = Result.create(params)
 
-    result = Result.new(result_params)
-
-    if user.results.create(result)
+    if user.present? && result.present?
       render json: { result: result }, status: :created
     else
       render json: { error: result.errors }, status: :bad_request
