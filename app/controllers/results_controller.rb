@@ -4,7 +4,6 @@ class ResultsController < ApplicationController
 
   def index
     results = current_user.results.all
-
     render json: results, status: :ok
   end
 
